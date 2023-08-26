@@ -25,4 +25,4 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with Maven
-        run: mvn -Dquarkus.container-image.registry=ghcr.io -Dquarkus.container-image.image=ghcr.io/kainzpat14/switchbot_proxy quarkus:image-build quarkus:image-push
+        run: mvn -Dquarkus.container-image.registry=ghcr.io -Dquarkus.container-image.image=ghcr.io/kainzpat14/switchbot_proxy clean build quarkus:build quarkus:image-build quarkus:image-push
