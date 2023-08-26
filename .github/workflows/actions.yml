@@ -16,6 +16,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with Maven
         run: mvn -Dquarkus.container-image.registry=ghcr.io -Dquarkus.container-image.image=ghcr.io/kainzpat14/switchbot_proxy quarkus:image-build quarkus:image-push
